@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/main.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/main.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/main.cpp",
+  "output": "CMakeFiles/main.dir/sources/main.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/sprite.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp",
+  "output": "CMakeFiles/main.dir/sources/sprite.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/system.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/system.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/system.cpp",
+  "output": "CMakeFiles/main.dir/sources/system.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/network.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/network.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/network.cpp",
+  "output": "CMakeFiles/main.dir/sources/network.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/gamestate.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp",
+  "output": "CMakeFiles/main.dir/sources/gamestate.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/effects.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/effects.cpp",
+  "output": "CMakeFiles/main.dir/sources/effects.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/dungeon.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp",
+  "output": "CMakeFiles/main.dir/sources/dungeon.cpp.o"
+},
+{
+  "directory": "/home/chiefkat/Documents/code/sketch-01/build",
+  "command": "/usr/bin/g++   -O2 -g -o CMakeFiles/main.dir/sources/collision.cpp.o -c /home/chiefkat/Documents/code/sketch-01/sources/collision.cpp",
+  "file": "/home/chiefkat/Documents/code/sketch-01/sources/collision.cpp",
+  "output": "CMakeFiles/main.dir/sources/collision.cpp.o"
+}
+]

@@ -126,23 +126,23 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         switch (mainG.level)
         {
         case 0:
-            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.sdf");
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.txt");
             break;
         case 1:
-            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L02.sdf");
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L02.txt");
             break;
         case 2:
-            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L03.sdf");
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L03.txt");
             break;
         case 3:
-            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/W.sdf");
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/W.txt");
             break;
         case 4:
             state = MENU_SCREEN;
             return;
         default:
             std::cout << ":megamind: no level?\n";
-            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.sdf");
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.txt");
             break;
         }
 
