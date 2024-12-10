@@ -22,6 +22,7 @@ ui_element::ui_element(ui_element_type t, sprite *v, float x, float y, void func
     func_i = _func_i;
     value = _linkValue;
 }
+// linkvalue apparently doesn nothing, get rid of it please
 ui_element::ui_element(ui_element_type t, const char *path, float x, float y, int frX, int frY, void func(character *, game_system *, dungeon *, int),
                        character *_func_p, game_system *_func_gs, dungeon *_func_d,
                        int _func_i, int *_linkValue)

@@ -100,11 +100,6 @@
 				"backtrace" : 2,
 				"fragment" : "-lsfml-system",
 				"role" : "libraries"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "-lc",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

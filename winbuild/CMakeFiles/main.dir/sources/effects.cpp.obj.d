@@ -1,7 +1,7 @@
 CMakeFiles/main.dir/sources/effects.cpp.obj: \
- /home/chiefkat/Documents/code/road/rambunctious/sources/effects.cpp \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/effects.h \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/setup.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/effects.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/setup.h \
  /usr/x86_64-w64-mingw32/include/SFML/Graphics.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/Window.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/System.hpp \
@@ -274,7 +274,7 @@ CMakeFiles/main.dir/sources/effects.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/iostream \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/istream \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/istream.tcc \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/sprite.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/sprite.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/random \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/cmath \
  /usr/x86_64-w64-mingw32/include/math.h \

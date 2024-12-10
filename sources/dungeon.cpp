@@ -7,7 +7,7 @@ dungeon::dungeon()
 {
     dungeonInitialized = false;
 }
-dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize)
+dungeon::dungeon(const char *_tileSetPath)
 {
     tileSetPath = _tileSetPath;
     dungeonSprite = sprite(tileSetPath, 0.0f, 0.0f, dungeonSpriteXFrames, dungeonSpriteYFrames);
@@ -16,8 +16,6 @@ dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsig
     {
         for (unsigned int y = 0; y < height_limit; ++y)
         {
-            // tiles[x][y] = sprite(tileSetPath, static_cast<float>(x), static_cast<float>(y), xSize, ySize, 1, 1);
-            // tiles[x][y].Put(static_cast<float>(x) * tiles[x][y].spriteW, static_cast<float>(y) * tiles[x][y].spriteH);
             tiles[x][y].id = -1;
         }
     } // the pointer to the ui_element's visual object is incorrect inside the element's update function
@@ -25,17 +23,16 @@ dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsig
 
 void dungeon::changeScreenViewPosition(sf::View &view, float newX, float newY)
 {
-    float x = newX, y = newY;
-    if (newX > viewBoundsWidth)
-        x = viewBoundsWidth;
-    if (newX < viewBoundsX)
-        x = viewBoundsX;
-    if (newX > viewBoundsHeight)
-        y = viewBoundsHeight;
-    if (newX < viewBoundsY)
-        y = viewBoundsY;
+    view.setCenter(sf::Vector2f(newX, newY));
 
-    view.setCenter(sf::Vector2f(x, y));
+    if (view.getCenter().x > viewBoundsWidth)
+        view.setCenter(sf::Vector2f(viewBoundsWidth, view.getCenter().y));
+    if (view.getCenter().x < viewBoundsX)
+        view.setCenter(sf::Vector2f(viewBoundsX, view.getCenter().y));
+    if (view.getCenter().y > viewBoundsHeight)
+        view.setCenter(sf::Vector2f(view.getCenter().x, viewBoundsHeight));
+    if (view.getCenter().y < viewBoundsY)
+        view.setCenter(sf::Vector2f(view.getCenter().x, viewBoundsY));
 }
 
 void dungeon::draw(sf::RenderWindow *win)
@@ -48,8 +45,9 @@ void dungeon::draw(sf::RenderWindow *win)
                 continue;
 
             dungeonSprite.Put(x * dungeonSprite.spriteW, y * dungeonSprite.spriteH); // change this to not be hardcoded pls
-            dungeonSprite.rect.setTextureRect(sf::IntRect(static_cast<int>(tiles[x][y].id % dungeonSprite.framesX) + 1,
-                                                          static_cast<int>(tiles[x][y].id / dungeonSprite.framesX), dungeonSprite.spriteW, dungeonSprite.spriteH));
+            dungeonSprite.rect.setTextureRect(sf::IntRect(static_cast<int>(tiles[x][y].id % dungeonSprite.framesX) * dungeonSprite.spriteW,
+                                                          static_cast<int>(tiles[x][y].id / dungeonSprite.framesX) * dungeonSprite.spriteH,
+                                                          dungeonSprite.spriteW, dungeonSprite.spriteH));
             win->draw(dungeonSprite.rect);
         }
     }
@@ -95,20 +93,20 @@ void dungeon::readRoomFile(const char *path)
                 tiles[i][roomHeight].collisionID = 0;
                 break;
             case 's':
-                tiles[i][roomHeight].id = 3;
+                tiles[i][roomHeight].id = 2;
 
                 spawnLocationX = i * dungeonSprite.spriteW;
                 spawnLocationY = roomHeight * dungeonSprite.spriteH;
                 tiles[i][roomHeight].collisionID = -1;
                 break;
             case 'e':
-                tiles[i][roomHeight].id = 3;
-
+                tiles[i][roomHeight].id = 2;
                 tiles[i][roomHeight].collisionID = 2;
                 break;
             case '2':
-                tiles[i][roomHeight].id = 5;
+                tiles[i][roomHeight].id = 1;
                 tiles[i][roomHeight].collisionID = 1;
+                break;
             default:
                 tiles[i][roomHeight].id = -1;
                 tiles[i][roomHeight].collisionID = -1;
@@ -202,8 +200,8 @@ void dungeon::readRoomFile(const char *path)
         }
     }
 
-    viewBoundsX = 0.0f;
-    viewBoundsY = 0.0f;
+    viewBoundsX = 128.0f;
+    viewBoundsY = 64.0f;
     viewBoundsWidth = roomWidth * dungeonSprite.spriteW;
-    viewBoundsHeight = -roomHeight * dungeonSprite.spriteH; // idk rn do later pls
+    viewBoundsHeight = -64.0f + (roomHeight / 2) * dungeonSprite.spriteH; // idk rn do later pls
 }

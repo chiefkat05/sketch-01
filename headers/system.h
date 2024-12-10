@@ -42,6 +42,7 @@ struct character
 {
     float velocityX = 0.0f, velocityY = 0.0f, runSpeedMulti = 1.0f;
     bool onGround = false, jumped = false;
+    bool isAPlayer = false;
 
     animation animations[animation_limit];
     // float posX = 0.0f, posY = 0.0f;
@@ -78,6 +79,8 @@ struct game_system
     sprite *sortedSprites[entity_limit];
     particlesystem *particles[particle_system_limit];
     int particlesystemcount;
+    int level = 0;
+    bool levelincreasing = false;
 
     int characterCount = 0;
     bool paused = false;

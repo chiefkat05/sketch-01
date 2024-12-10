@@ -1,6 +1,6 @@
 CMakeFiles/main.dir/sources/system.cpp.obj: \
- /home/chiefkat/Documents/code/road/rambunctious/sources/system.cpp \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/system.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/system.cpp \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/system.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/iostream \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/requires_hosted.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -145,8 +145,8 @@ CMakeFiles/main.dir/sources/system.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/ostream.tcc \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/istream \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/istream.tcc \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/sprite.h \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/setup.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/sprite.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/setup.h \
  /usr/x86_64-w64-mingw32/include/SFML/Graphics.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/Window.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/System.hpp \
@@ -275,8 +275,8 @@ CMakeFiles/main.dir/sources/system.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/SFML/Audio/SoundFileFactory.inl \
  /usr/x86_64-w64-mingw32/include/SFML/Audio/SoundFileReader.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/Audio/SoundFileWriter.hpp \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/collision.h \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/dungeon.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/collision.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/dungeon.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/random \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/cmath \
  /usr/x86_64-w64-mingw32/include/math.h \
@@ -305,4 +305,4 @@ CMakeFiles/main.dir/sources/system.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/basic_file.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++io.h \
  /usr/x86_64-w64-mingw32/include/c++/14.2.0/bits/fstream.tcc \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/effects.h
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/effects.h

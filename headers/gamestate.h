@@ -45,6 +45,7 @@ enum game_state
     MENU_SCREEN,
     CHARACTER_CREATION_SCREEN,
     DUNGEON_SCREEN,
+    WON_LEVEL_STATE,
     LOSE_SCREEN,
     WIN_SCREEN,
     state_total_count

@@ -54,7 +54,7 @@ character::character() {}
 character::character(sprite &v, IDENTIFICATION _id) : visual(v)
 {
     visual.rect.setTextureRect(sf::IntRect(0, 0, visual.spriteW, visual.spriteH));
-    visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
+    visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH)));
     // posX = visual.rect.getPosition().x;
     // posY = visual.rect.getPosition().y;
     // walkToX = posX;
@@ -62,13 +62,14 @@ character::character(sprite &v, IDENTIFICATION _id) : visual(v)
     id = _id;
     hp = maxhp;
 
-    collider = aabb(visual.rect.getPosition().x, visual.rect.getPosition().y, visual.rect.getPosition().x + visual.spriteW, visual.rect.getPosition().y + visual.spriteH * 0.5f);
+    collider = aabb(visual.rect.getPosition().x - visual.spriteW * 0.5f, visual.rect.getPosition().y - visual.spriteH,
+                    visual.rect.getPosition().x + visual.spriteW * 0.5f, visual.rect.getPosition().y);
 }
 character::character(std::string filepath, float x, float y, unsigned int fx, unsigned int fy, IDENTIFICATION _id)
 {
     visual = sprite(filepath.c_str(), x, y, fx, fy);
     visual.rect.setTextureRect(sf::IntRect(0, 0, visual.spriteW, visual.spriteH));
-    visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
+    visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH)));
     // posX = visual.rect.getPosition().x;
     // posY = visual.rect.getPosition().y;
     // walkToX = posX;
@@ -121,7 +122,11 @@ void character::MoveTo(float _x, float _y, dungeon *currentDungeon)
 
 void character::Update(float delta_time)
 {
-    collider.moveCenterToPoint(visual.rect.getPosition().x, visual.rect.getPosition().y + 4.0f);
+    // collider.moveCenterToPoint(visual.rect.getPosition().x, visual.rect.getPosition().y + 4.0f);
+    collider.min_x = visual.rect.getPosition().x - visual.spriteW * 0.5f;
+    collider.max_x = visual.rect.getPosition().x + visual.spriteW * 0.5f;
+    collider.min_y = visual.rect.getPosition().y - visual.spriteH;
+    collider.max_y = visual.rect.getPosition().y;
 
     if (hp <= 0)
     {
@@ -172,12 +177,7 @@ void character::Update(float delta_time)
 }
 void character::updatePosition(float delta_time)
 {
-    // posX += velocityX * runSpeedMulti;
-    // posY += velocityY * runSpeedMulti;
-    // posX += velocityX; // it's just a disaster, please try and remo entirely
-    // posY += velocityY;
     visual.Move(velocityX * delta_time, velocityY * delta_time);
-    std::cout << velocityX << " hmm\n";
 }
 
 void character::SetAnimation(ANIMATION_MAPPINGS id, unsigned int s, unsigned int e, float spd)
@@ -277,7 +277,7 @@ void game_system::update(dungeon &floor, float delta_time)
         characters[i]->Update(delta_time);
         if (!characters[i]->onGround)
         {
-            characters[i]->velocityY += 1.0f;
+            characters[i]->velocityY += 900.0f * delta_time;
         }
 
         for (int j = 0; j < floor.collision_box_count; ++j)
@@ -290,40 +290,40 @@ void game_system::update(dungeon &floor, float delta_time)
                 continue;
             }
 
-            // float playerMoveSpeedX = characters[i]->velocityX;
-            // if (characters[i]->walkToX < characters[i]->posX)
-            //     playerMoveSpeedX = -characters[i]->runSpeed;
-
-            // float playerMoveSpeedY = characters[i]->velocityY;
-            // if (characters[i]->walkToY < characters[i]->posY)
-            //     playerMoveSpeedY = -characters[i]->runSpeed;
-
-            // if (characters[i]->walkToX == characters[i]->posX)
-            //     playerMoveSpeedX = 0.0f;
-            // if (characters[i]->walkToY == characters[i]->posY)
-            //     playerMoveSpeedY = 0.0f;
-
             float xNormal = 0.0f, yNormal = 0.0f;
 
             float firstCollisionHitTest = characters[i]->collider.response(characters[i]->velocityX * delta_time,
                                                                            characters[i]->velocityY * delta_time, floor.collision_boxes[j], xNormal, yNormal);
 
-            if (firstCollisionHitTest < 1.0f && xNormal < 0.0f && characters[i]->velocityX > 0.0f)
+            switch (floor.collision_boxes[j].collisionID)
             {
-                characters[i]->velocityX *= firstCollisionHitTest;
-            }
-            if (firstCollisionHitTest < 1.0f && xNormal > 0.0f && characters[i]->velocityX < 0.0f)
-            {
-                characters[i]->velocityX *= firstCollisionHitTest;
-            }
-            if (firstCollisionHitTest < 1.0f && yNormal < 0.0f && characters[i]->velocityY > 0.0f)
-            {
-                characters[i]->onGround = true;
-                characters[i]->velocityY *= firstCollisionHitTest;
-            }
-            if (firstCollisionHitTest < 1.0f && yNormal > 0.0f && characters[i]->velocityY < 0.0f)
-            {
-                characters[i]->velocityY *= firstCollisionHitTest;
+            case 1:
+                if (firstCollisionHitTest < 1.0f)
+                    characters[i]->hp = 0;
+                break;
+            case 2:
+                if (firstCollisionHitTest < 1.0f && characters[i]->isAPlayer)
+                    levelincreasing = true;
+                break;
+            default:
+                if (firstCollisionHitTest < 1.0f && xNormal < 0.0f && characters[i]->velocityX > 0.0f)
+                {
+                    characters[i]->velocityX *= firstCollisionHitTest;
+                }
+                if (firstCollisionHitTest < 1.0f && xNormal > 0.0f && characters[i]->velocityX < 0.0f)
+                {
+                    characters[i]->velocityX *= firstCollisionHitTest;
+                }
+                if (firstCollisionHitTest < 1.0f && yNormal < 0.0f && characters[i]->velocityY > 0.0f)
+                {
+                    characters[i]->onGround = true;
+                    characters[i]->velocityY *= firstCollisionHitTest;
+                }
+                if (firstCollisionHitTest < 1.0f && yNormal > 0.0f && characters[i]->velocityY < 0.0f)
+                {
+                    characters[i]->velocityY *= firstCollisionHitTest;
+                }
+                break;
             }
         }
         characters[i]->updatePosition(delta_time);

@@ -36,7 +36,7 @@ struct dungeon
     unsigned int collision_box_count = 0;
 
     dungeon();
-    dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize);
+    dungeon(const char *_tileSetPath);
 
     void changeScreenViewPosition(sf::View &view, float newX, float newY);
 

@@ -39,6 +39,7 @@ struct animation
     float timer = 10.0f;
     unsigned int frame = 0;
     bool finished = false;
+    float xScale = 1.0f, yScale = 1.0f;
 
     sprite *_sprite;
 
@@ -52,6 +53,11 @@ struct animation
         start = s;
         end = e;
         speed = spd;
+    }
+    void setScale(float x, float y)
+    {
+        xScale = x;
+        yScale = y;
     }
 
     void run(float delta_time, bool loop)
@@ -82,7 +88,8 @@ struct animation
             finished = true;
             return;
         }
-        _sprite->rect.setTextureRect(sf::IntRect(frame % _sprite->framesX * _sprite->spriteW, frame / _sprite->framesX * _sprite->spriteH, _sprite->spriteW, _sprite->spriteH));
+        _sprite->rect.setTextureRect(sf::IntRect(frame % _sprite->framesX * _sprite->spriteW, frame / _sprite->framesX * _sprite->spriteH,
+                                                 _sprite->spriteW * xScale, _sprite->spriteH * yScale));
     }
 };
 

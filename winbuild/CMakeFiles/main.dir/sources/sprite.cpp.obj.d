@@ -1,7 +1,7 @@
 CMakeFiles/main.dir/sources/sprite.cpp.obj: \
- /home/chiefkat/Documents/code/road/rambunctious/sources/sprite.cpp \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/sprite.h \
- /home/chiefkat/Documents/code/road/rambunctious/sources/../headers/setup.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/sprite.h \
+ /home/chiefkat/Documents/code/sketch-01/sources/../headers/setup.h \
  /usr/x86_64-w64-mingw32/include/SFML/Graphics.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/Window.hpp \
  /usr/x86_64-w64-mingw32/include/SFML/System.hpp \

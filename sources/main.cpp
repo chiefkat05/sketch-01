@@ -15,7 +15,7 @@ extern gui gui_data;
 extern game_state state;
 extern connector host;
 
-void dungeonInit(game_system &game, dungeon &dg);
+void dungeonInit(game_system &game, dungeon &dg, std::string tilePath, std::string levelPath);
 
 void playerControl(game_system &game, character &p, sf::RenderWindow &window, dungeon *floor)
 {
@@ -38,7 +38,7 @@ void playerControl(game_system &game, character &p, sf::RenderWindow &window, du
     if (p.onGround && !p.jumped && (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)))
     {
         // p.MoveTo(p.visual.rect.getPosition().x, p.visual.rect.getPosition().y - 4.0f, floor);
-        p.velocityY -= 2.0f * p.runSpeed;
+        p.velocityY -= 3.2f * p.runSpeed;
         p.jumped = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
@@ -118,7 +118,33 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/p.png", 40.0f, 40.0f, 1, 1, startGame, nullptr, nullptr, nullptr, DUNGEON_SCREEN));
         break;
     case DUNGEON_SCREEN:
-        dungeonInit(mainG, floor);
+        if (mainG.levelincreasing)
+        {
+            mainG.levelincreasing = false;
+            mainG.level++;
+        }
+        switch (mainG.level)
+        {
+        case 0:
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.sdf");
+            break;
+        case 1:
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L02.sdf");
+            break;
+        case 2:
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L03.sdf");
+            break;
+        case 3:
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/W.sdf");
+            break;
+        case 4:
+            state = MENU_SCREEN;
+            return;
+        default:
+            std::cout << ":megamind: no level?\n";
+            dungeonInit(mainG, floor, "../img/01-tiles.png", "../dungeons/L01.sdf");
+            break;
+        }
 
         if (!mainG.game_music.openFromFile("../snd/mus/L-04.mp3"))
         {
@@ -126,8 +152,10 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         }
         gui_data.background = sprite("../img/01.png", 0.0f, 0.0f, 1, 2);
         // gui_data.background.rect.setColor(sf::Color(255, 255, 255, 255));
-        // gui_data.background.rect.setTextureRect(sf::IntRect(0, 0, 512, 64));
         gui_data.bgAnim = animation(&gui_data.background, 0, 1, 50.0f);
+        gui_data.bgAnim.setScale(2.0f, 1.0f);
+
+        mainP.visual.Put(floor.spawnLocationX, floor.spawnLocationY);
         // gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/s.png", 218.0f, 102.0f, 1, 1, optionsTab, nullptr, &mainG));
 
         // if (prevState == CHARACTER_CREATION_SCREEN)
@@ -139,20 +167,12 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         // }
 
         break;
-    case LOSE_SCREEN:
-        break;
-    case WIN_SCREEN:
-        if (!mainG.game_music.openFromFile("../snd/mus/V-L.mp3"))
+    case WON_LEVEL_STATE:
+        std::cout << "wow\n";
+        if (!mainG.levelincreasing)
         {
-            std::cout << "failed to load ../snd/mus/V-L.mp3\n";
+            std::cout << "how did you do this\n";
         }
-        // floor.screenPositionX = 64.0f;
-        // floor.screenPositionY = 0.0f;
-        gui_data.background = sprite("../img/ui/backgrounds/wave.png", 0.0f, 0.0f, 1, 7);
-        gui_data.elements.push_back(ui_element(UI_IMAGE, "../img/s.png", 128.0f, 24.0f, 1, 1, nullptr));
-
-        // gui_data.elements.push_back(ui_element(UI_IMAGE, "../img/ui/victory.png", 0.0f, 0.0f, 256.0f, 128.0f, 1, 1, nullFunc));
-        // load victory map here
         break;
     default:
         break;
@@ -165,6 +185,7 @@ bool pauseKeyHeld = false, uiKeyHeld = false, showUI = true;
 void playerInit(character &pl, game_system &game)
 {
     pl = character("../img/stick.png", 120.0f, 40.0f, 4, 1, CH_PLAYER);
+    pl.isAPlayer = true;
 
     pl.SetAnimation(ANIM_IDLE, 0, 0, 0.0f);
     pl.SetAnimation(ANIM_WALK, 0, 1, 150.0f);
@@ -173,10 +194,10 @@ void playerInit(character &pl, game_system &game)
 
     game.Add(&pl);
 }
-void dungeonInit(game_system &game, dungeon &dg)
+void dungeonInit(game_system &game, dungeon &dg, std::string tilePath, std::string levelPath)
 {
-    dg = dungeon("../img/01-tiles.png", 64.0f, 64.0f);
-    dg.readRoomFile("../dungeons/L01.sdf");
+    dg = dungeon(tilePath.c_str());
+    dg.readRoomFile(levelPath.c_str());
 }
 
 extern game_system game;
@@ -244,8 +265,13 @@ int main()
             pauseKeyHeld = true;
 
         window.clear();
-
+        if (state == WON_LEVEL_STATE && game.levelincreasing)
+        {
+            prevState = WON_LEVEL_STATE;
+            state = DUNGEON_SCREEN;
+        }
         menuData(game, mainPlayer, mainDungeon);
+
         game.handleMusic();
 
         window.draw(gui_data.background.rect);
@@ -265,6 +291,17 @@ int main()
 
                 window.draw(game.characters[i]->visual.rect);
             }
+
+            if (mainPlayer.hp <= 0)
+            {
+                mainPlayer.visual.Put(mainDungeon.spawnLocationX, mainDungeon.spawnLocationY);
+                mainPlayer.hp = mainPlayer.maxhp;
+            }
+
+            if (game.levelincreasing)
+            {
+                state = WON_LEVEL_STATE;
+            }
         }
         for (int i = 0; i < game.particlesystemcount; ++i)
         {
@@ -279,7 +316,7 @@ int main()
         {
             uiKeyHeld = true;
         }
-        if (showUI && state != DUNGEON_SCREEN)
+        if (showUI)
         {
             gui_data.screenDraw(&window, mouseX, mouseY, mousePressed, mouseReleased, delta_time);
         }

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chiefkat/Documents/code/road/rambunctious
+CMAKE_SOURCE_DIR = /home/chiefkat/Documents/code/sketch-01
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chiefkat/Documents/code/road/rambunctious/winbuild
+CMAKE_BINARY_DIR = /home/chiefkat/Documents/code/sketch-01/winbuild
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -73,116 +73,116 @@ CMakeFiles/main.dir/codegen:
 .PHONY : CMakeFiles/main.dir/codegen
 
 CMakeFiles/main.dir/sources/main.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/main.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/main.cpp
+CMakeFiles/main.dir/sources/main.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/main.cpp
 CMakeFiles/main.dir/sources/main.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/sources/main.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/main.cpp.obj -MF CMakeFiles/main.dir/sources/main.cpp.obj.d -o CMakeFiles/main.dir/sources/main.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/sources/main.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/main.cpp.obj -MF CMakeFiles/main.dir/sources/main.cpp.obj.d -o CMakeFiles/main.dir/sources/main.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/main.cpp
 
 CMakeFiles/main.dir/sources/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/main.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/main.cpp > CMakeFiles/main.dir/sources/main.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/main.cpp > CMakeFiles/main.dir/sources/main.cpp.i
 
 CMakeFiles/main.dir/sources/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/main.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/main.cpp -o CMakeFiles/main.dir/sources/main.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/main.cpp -o CMakeFiles/main.dir/sources/main.cpp.s
 
 CMakeFiles/main.dir/sources/sprite.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/sprite.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/sprite.cpp
+CMakeFiles/main.dir/sources/sprite.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp
 CMakeFiles/main.dir/sources/sprite.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/sources/sprite.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/sprite.cpp.obj -MF CMakeFiles/main.dir/sources/sprite.cpp.obj.d -o CMakeFiles/main.dir/sources/sprite.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/sprite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/sources/sprite.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/sprite.cpp.obj -MF CMakeFiles/main.dir/sources/sprite.cpp.obj.d -o CMakeFiles/main.dir/sources/sprite.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp
 
 CMakeFiles/main.dir/sources/sprite.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/sprite.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/sprite.cpp > CMakeFiles/main.dir/sources/sprite.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp > CMakeFiles/main.dir/sources/sprite.cpp.i
 
 CMakeFiles/main.dir/sources/sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/sprite.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/sprite.cpp -o CMakeFiles/main.dir/sources/sprite.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/sprite.cpp -o CMakeFiles/main.dir/sources/sprite.cpp.s
 
 CMakeFiles/main.dir/sources/system.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/system.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/system.cpp
+CMakeFiles/main.dir/sources/system.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/system.cpp
 CMakeFiles/main.dir/sources/system.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/sources/system.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/system.cpp.obj -MF CMakeFiles/main.dir/sources/system.cpp.obj.d -o CMakeFiles/main.dir/sources/system.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/system.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/sources/system.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/system.cpp.obj -MF CMakeFiles/main.dir/sources/system.cpp.obj.d -o CMakeFiles/main.dir/sources/system.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/system.cpp
 
 CMakeFiles/main.dir/sources/system.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/system.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/system.cpp > CMakeFiles/main.dir/sources/system.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/system.cpp > CMakeFiles/main.dir/sources/system.cpp.i
 
 CMakeFiles/main.dir/sources/system.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/system.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/system.cpp -o CMakeFiles/main.dir/sources/system.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/system.cpp -o CMakeFiles/main.dir/sources/system.cpp.s
 
 CMakeFiles/main.dir/sources/network.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/network.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/network.cpp
+CMakeFiles/main.dir/sources/network.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/network.cpp
 CMakeFiles/main.dir/sources/network.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/sources/network.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/network.cpp.obj -MF CMakeFiles/main.dir/sources/network.cpp.obj.d -o CMakeFiles/main.dir/sources/network.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/network.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/sources/network.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/network.cpp.obj -MF CMakeFiles/main.dir/sources/network.cpp.obj.d -o CMakeFiles/main.dir/sources/network.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/network.cpp
 
 CMakeFiles/main.dir/sources/network.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/network.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/network.cpp > CMakeFiles/main.dir/sources/network.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/network.cpp > CMakeFiles/main.dir/sources/network.cpp.i
 
 CMakeFiles/main.dir/sources/network.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/network.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/network.cpp -o CMakeFiles/main.dir/sources/network.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/network.cpp -o CMakeFiles/main.dir/sources/network.cpp.s
 
 CMakeFiles/main.dir/sources/gamestate.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/gamestate.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/gamestate.cpp
+CMakeFiles/main.dir/sources/gamestate.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp
 CMakeFiles/main.dir/sources/gamestate.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/sources/gamestate.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/gamestate.cpp.obj -MF CMakeFiles/main.dir/sources/gamestate.cpp.obj.d -o CMakeFiles/main.dir/sources/gamestate.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/gamestate.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/sources/gamestate.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/gamestate.cpp.obj -MF CMakeFiles/main.dir/sources/gamestate.cpp.obj.d -o CMakeFiles/main.dir/sources/gamestate.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp
 
 CMakeFiles/main.dir/sources/gamestate.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/gamestate.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/gamestate.cpp > CMakeFiles/main.dir/sources/gamestate.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp > CMakeFiles/main.dir/sources/gamestate.cpp.i
 
 CMakeFiles/main.dir/sources/gamestate.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/gamestate.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/gamestate.cpp -o CMakeFiles/main.dir/sources/gamestate.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/gamestate.cpp -o CMakeFiles/main.dir/sources/gamestate.cpp.s
 
 CMakeFiles/main.dir/sources/effects.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/effects.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/effects.cpp
+CMakeFiles/main.dir/sources/effects.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp
 CMakeFiles/main.dir/sources/effects.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/sources/effects.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/effects.cpp.obj -MF CMakeFiles/main.dir/sources/effects.cpp.obj.d -o CMakeFiles/main.dir/sources/effects.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/effects.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/sources/effects.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/effects.cpp.obj -MF CMakeFiles/main.dir/sources/effects.cpp.obj.d -o CMakeFiles/main.dir/sources/effects.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp
 
 CMakeFiles/main.dir/sources/effects.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/effects.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/effects.cpp > CMakeFiles/main.dir/sources/effects.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp > CMakeFiles/main.dir/sources/effects.cpp.i
 
 CMakeFiles/main.dir/sources/effects.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/effects.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/effects.cpp -o CMakeFiles/main.dir/sources/effects.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/effects.cpp -o CMakeFiles/main.dir/sources/effects.cpp.s
 
 CMakeFiles/main.dir/sources/dungeon.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/dungeon.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/dungeon.cpp
+CMakeFiles/main.dir/sources/dungeon.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp
 CMakeFiles/main.dir/sources/dungeon.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/sources/dungeon.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/dungeon.cpp.obj -MF CMakeFiles/main.dir/sources/dungeon.cpp.obj.d -o CMakeFiles/main.dir/sources/dungeon.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/dungeon.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/sources/dungeon.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/dungeon.cpp.obj -MF CMakeFiles/main.dir/sources/dungeon.cpp.obj.d -o CMakeFiles/main.dir/sources/dungeon.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp
 
 CMakeFiles/main.dir/sources/dungeon.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/dungeon.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/dungeon.cpp > CMakeFiles/main.dir/sources/dungeon.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp > CMakeFiles/main.dir/sources/dungeon.cpp.i
 
 CMakeFiles/main.dir/sources/dungeon.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/dungeon.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/dungeon.cpp -o CMakeFiles/main.dir/sources/dungeon.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/dungeon.cpp -o CMakeFiles/main.dir/sources/dungeon.cpp.s
 
 CMakeFiles/main.dir/sources/collision.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/sources/collision.cpp.obj: /home/chiefkat/Documents/code/road/rambunctious/sources/collision.cpp
+CMakeFiles/main.dir/sources/collision.cpp.obj: /home/chiefkat/Documents/code/sketch-01/sources/collision.cpp
 CMakeFiles/main.dir/sources/collision.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/sources/collision.cpp.obj"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/collision.cpp.obj -MF CMakeFiles/main.dir/sources/collision.cpp.obj.d -o CMakeFiles/main.dir/sources/collision.cpp.obj -c /home/chiefkat/Documents/code/road/rambunctious/sources/collision.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/sources/collision.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/sources/collision.cpp.obj -MF CMakeFiles/main.dir/sources/collision.cpp.obj.d -o CMakeFiles/main.dir/sources/collision.cpp.obj -c /home/chiefkat/Documents/code/sketch-01/sources/collision.cpp
 
 CMakeFiles/main.dir/sources/collision.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/sources/collision.cpp.i"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/road/rambunctious/sources/collision.cpp > CMakeFiles/main.dir/sources/collision.cpp.i
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chiefkat/Documents/code/sketch-01/sources/collision.cpp > CMakeFiles/main.dir/sources/collision.cpp.i
 
 CMakeFiles/main.dir/sources/collision.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/sources/collision.cpp.s"
-	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/road/rambunctious/sources/collision.cpp -o CMakeFiles/main.dir/sources/collision.cpp.s
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chiefkat/Documents/code/sketch-01/sources/collision.cpp -o CMakeFiles/main.dir/sources/collision.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -210,7 +210,7 @@ main.exe: CMakeFiles/main.dir/build.make
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -222,6 +222,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /home/chiefkat/Documents/code/road/rambunctious/winbuild && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chiefkat/Documents/code/road/rambunctious /home/chiefkat/Documents/code/road/rambunctious /home/chiefkat/Documents/code/road/rambunctious/winbuild /home/chiefkat/Documents/code/road/rambunctious/winbuild /home/chiefkat/Documents/code/road/rambunctious/winbuild/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/chiefkat/Documents/code/sketch-01/winbuild && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chiefkat/Documents/code/sketch-01 /home/chiefkat/Documents/code/sketch-01 /home/chiefkat/Documents/code/sketch-01/winbuild /home/chiefkat/Documents/code/sketch-01/winbuild /home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 
