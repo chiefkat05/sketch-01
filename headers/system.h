@@ -49,7 +49,6 @@ struct character
     sprite visual;
     aabb collider;
 
-    character *target = nullptr;
     IDENTIFICATION id = CH_MONSTER;
     float attackTimer = 0.0f;
     int hp = 10, maxhp = 10;

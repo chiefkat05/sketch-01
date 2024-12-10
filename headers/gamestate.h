@@ -55,7 +55,7 @@ struct gui
 {
     std::vector<ui_element> elements;
     sprite background;
-    animation menuBG;
+    animation bgAnim;
     bool quit = false;
 
     void screenDraw(sf::RenderWindow *window, float mouseX, float mouseY, bool mousePressed, bool mouseReleased, float delta_time);

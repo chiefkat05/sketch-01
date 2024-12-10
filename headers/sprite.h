@@ -62,16 +62,14 @@ struct animation
             if (frame >= end)
                 finished = true;
 
+            timer = 10.0f;
+
             if (loop)
             {
-                timer = 10.0f;
-
                 frame >= end ? frame = 0 : ++frame;
             }
             if (!loop)
             {
-                timer = 10.0f;
-
                 frame >= end ? frame = end : ++frame;
             }
         }

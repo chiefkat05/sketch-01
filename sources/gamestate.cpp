@@ -89,9 +89,16 @@ void gui::screenDraw(sf::RenderWindow *window, float mouseX, float mouseY, bool 
     for (int i = 0; i < elements.size(); ++i)
     {
         elements[i].update(mouseX, mouseY, mousePressed, mouseReleased, delta_time);
+        if (elements[i].anim._sprite != nullptr)
+        {
+            elements[i].anim.run(delta_time, true);
+        }
         window->draw(elements[i].visual.rect);
     }
-    menuBG.run(delta_time, true);
+    if (bgAnim._sprite != nullptr)
+    {
+        bgAnim.run(delta_time, true);
+    }
 }
 
 void startGame(character *p, game_system *gs, dungeon *d, int argv)

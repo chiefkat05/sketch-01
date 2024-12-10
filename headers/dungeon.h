@@ -10,14 +10,15 @@ const unsigned int room_limit = 12;
 const unsigned int width_limit = 128;
 const unsigned int height_limit = 128;
 const unsigned int collision_box_limit = 64;
+const unsigned int collision_id_limit = 3;
 const unsigned int entity_limit_2 = 64;
 
 #define NULL_TILE -2147483647
 
 struct tile
 {
-    int id = 0;
-    bool collision, collisiontaken;
+    int id = 0, collisionID = 0;
+    bool collisiontaken;
 };
 
 struct dungeon
@@ -25,9 +26,6 @@ struct dungeon
     bool start = true, end = false, dungeonInitialized = false;
     tile tiles[width_limit][height_limit];
     sprite dungeonSprite;
-
-    sprite enemies[entity_limit_2];
-    int enemyCount = 0;
 
     unsigned int roomWidth = 0, roomHeight = 0;
     unsigned int tileSpriteX, tileSpriteY;

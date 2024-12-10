@@ -22,24 +22,20 @@ void playerControl(game_system &game, character &p, sf::RenderWindow &window, du
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        p.target = nullptr;
-        p.MoveTo(p.visual.rect.getPosition().x - 4.0f * massScale, p.visual.rect.getPosition().y, floor);
+        // p.MoveTo(p.visual.rect.getPosition().x - 4.0f * massScale, p.visual.rect.getPosition().y, floor);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        p.target = nullptr;
-        p.MoveTo(p.visual.rect.getPosition().x + 4.0f * massScale, p.visual.rect.getPosition().y, floor);
+        // p.MoveTo(p.visual.rect.getPosition().x + 4.0f * massScale, p.visual.rect.getPosition().y, floor);
     }
     if (!p.jumped && (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)))
     {
-        p.target = nullptr;
         // p.MoveTo(p.visual.rect.getPosition().x, p.visual.rect.getPosition().y - 4.0f * massScale, floor);
         p.onGround = false;
         p.jumped = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
-        p.target = nullptr;
         // p.allies[i].MoveTo(p.allies[i].visual.rect.getPosition().x, p.allies[i].visual.rect.getPosition().y + 4.0f * massScale, floor);
     }
 }
@@ -87,18 +83,18 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         {
             std::cout << "failed to load ../snd/mus/M-01.mp3\n";
         }
-        gui_data.background = sprite("../img/wave.png", 0.0f, 0.0f, 1, 7);
+        gui_data.background = sprite("../img/pond.png", 0.0f, 0.0f, 2, 5);
+        gui_data.bgAnim = animation(&gui_data.background, 0, 9, 50.0f);
         gui_data.background.rect.setColor(sf::Color(255, 255, 255, 255));
         gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/p.png", 60.0f, 50.0f, 4, 1, startGame, nullptr, nullptr, nullptr, CHARACTER_CREATION_SCREEN));
-        // gui_data.elements[gui_data.elements.size() - 1].anim = animation(&gui_data.elements[gui_data.elements.size() - 1].visual, 0, 3, 180.0f);
-        // gui_data.elements[gui_data.elements.size() - 1].anim.run(delta_time, true);
+        gui_data.elements[gui_data.elements.size() - 1].anim = animation(&gui_data.elements[gui_data.elements.size() - 1].visual, 0, 3, 180.0f);
+        gui_data.elements[gui_data.elements.size() - 1].anim.run(delta_time, true);
         // gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/s.png", 80.0f, 50.0f, 8, 1, optionsTab, nullptr, &mainG));
         // gui_data.elements[gui_data.elements.size() - 1].anim = animation(&gui_data.elements[gui_data.elements.size() - 1].visual, 0, 7, 180.0f);
         // gui_data.elements[gui_data.elements.size() - 1].anim.run(delta_time, true);
         // gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/q.png", 100.0f, 50.0f, 4, 4, quitGame));
         // gui_data.elements[gui_data.elements.size() - 1].anim = animation(&gui_data.elements[gui_data.elements.size() - 1].visual, 0, 12, 180.0f);
         // gui_data.elements[gui_data.elements.size() - 1].anim.run(delta_time, true);
-        gui_data.menuBG = animation(&gui_data.background, 0, 6, 9.0f);
         break;
     case MENU_SCREEN:
         floor.screenPositionX = 0.0f;
@@ -120,9 +116,11 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
         {
             std::cout << "failed to load ../snd/mus/L-04.mp3\n";
         }
-        gui_data.background.rect.setColor(sf::Color(255, 255, 255, 255));
-        gui_data.background.rect.setTextureRect(sf::IntRect(0, 0, 512, 64));
-        gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/s.png", 218.0f, 102.0f, 1, 1, optionsTab, nullptr, &mainG));
+        gui_data.background = sprite("../img/01.png", 0.0f, 0.0f, 1, 2);
+        // gui_data.background.rect.setColor(sf::Color(255, 255, 255, 255));
+        // gui_data.background.rect.setTextureRect(sf::IntRect(0, 0, 512, 64));
+        gui_data.bgAnim = animation(&gui_data.background, 0, 1, 50.0f);
+        // gui_data.elements.push_back(ui_element(UI_CLICKABLE, "../img/s.png", 218.0f, 102.0f, 1, 1, optionsTab, nullptr, &mainG));
 
         if (prevState == CHARACTER_CREATION_SCREEN)
         {
@@ -131,11 +129,6 @@ void menuData(game_system &mainG, character &mainP, dungeon &floor)
             mainP.walkToX = floor.spawnLocationX;
             mainP.walkToY = floor.spawnLocationY;
         }
-
-        floor.screenPositionX = -mainP.posX + 128.0f;
-        floor.screenPositionY = -mainP.posY + 64.0f;
-
-        gui_data.background.walkToY = -192.0f;
 
         break;
     case LOSE_SCREEN:
@@ -174,8 +167,8 @@ void playerInit(character &pl, game_system &game)
 }
 void dungeonInit(game_system &game, dungeon &dg)
 {
-    dg = dungeon("../img/ui/empty.png", 64.0f, 64.0f, massScale, massYOffset); // in case you were wondering, the dungeon sprite is empty and that's why you can't see it :)
-    dg.readRoomFile("../dungeons/road.sdf", massScale, massYOffset);
+    dg = dungeon("../img/01-tiles.png", 64.0f, 64.0f, massScale, massYOffset); // in case you were wondering, the dungeon sprite is empty and that's why you can't see it :)
+    dg.readRoomFile("../dungeons/L01.sdf", massScale, massYOffset);
     // particlesystem snowparticles("../img/particles/snow.png", 2.0f, 2.0f, 0, 0, 4, 4, 9999);
 }
 
@@ -205,6 +198,7 @@ int main()
         std::cout << "super kinds font failed to load :(\n";
     }
 
+    sf::Event event; // why segmentation fault on any event???
     while (window.isOpen())
     {
         mouseX = sf::Mouse::getPosition(window).x;
@@ -215,10 +209,10 @@ int main()
         current_time = sfTime.asSeconds();
         delta_time = current_time - previous_time;
 
-        sf::Event event;
-
+        std::cout << "crash?\n";
         while (window.pollEvent(event))
         {
+            std::cout << "fix inside?\n";
             if (event.type == sf::Event::Closed)
                 window.close();
 
@@ -230,7 +224,12 @@ int main()
                 screen.setSize(256.0f, 256.0f / ratio);
                 window.setView(screen);
             }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                std::cout << "???\n";
+            }
         }
+        std::cout << "here?\n";
 
         mouseUpdate();
 
@@ -258,7 +257,7 @@ int main()
 
             mainDungeon.draw(&window);
             game.update(mainDungeon, delta_time);
-            playerControl(game, mainPlayer, window, &mainDungeon);
+            // playerControl(game, mainPlayer, window, &mainDungeon);
 
             for (int i = 0; i < game.characterCount; ++i)
             {

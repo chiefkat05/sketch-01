@@ -168,6 +168,9 @@ void character::Update(float delta_time, float screenOffsetX, float screenOffset
 
     if (animations[playingAnim].finished)
         animationFinished = true;
+
+    velocityY -= 15.0f * delta_time;
+    onGround = false;
 }
 void character::updatePosition()
 {
@@ -268,23 +271,6 @@ void game_system::update(dungeon &floor, float delta_time)
             case CH_PLAYER:
                 break;
             case CH_MONSTER:
-                if (characters[j]->id != CH_PLAYER)
-                {
-                    break;
-                }
-
-                if (characters[i]->target == nullptr && characters[j]->hp > 0)
-                {
-                    float xDist = characters[i]->posX - characters[j]->posX;
-                    float yDist = characters[i]->posY - characters[j]->posY;
-
-                    float distance = xDist * xDist + yDist * yDist;
-
-                    if (distance < 4000.0f)
-                    {
-                        characters[i]->target = characters[j];
-                    }
-                }
                 break;
             }
         }
@@ -328,6 +314,7 @@ void game_system::update(dungeon &floor, float delta_time)
             }
             if (firstCollisionHitTest < 1.0f && yNormal < 0.0f && characters[i]->velocityY > 0.0f)
             {
+                characters[i]->onGround = true;
                 characters[i]->velocityY *= firstCollisionHitTest;
             }
             if (firstCollisionHitTest < 1.0f && yNormal > 0.0f && characters[i]->velocityY < 0.0f)
