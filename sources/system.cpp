@@ -59,12 +59,12 @@ character::character(sprite &v, IDENTIFICATION _id) : visual(v)
     visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
     posX = visual.rect.getPosition().x;
     posY = visual.rect.getPosition().y;
-    walkToX = posX;
-    walkToY = posY;
+    // walkToX = posX;
+    // walkToY = posY;
     id = _id;
     hp = maxhp;
 
-    collider = aabb(posX, posY, posX + 16.0f, posY + 8.0f);
+    collider = aabb(posX, posY, posX + visual.spriteW, posY + visual.spriteH * 0.5f);
 }
 character::character(std::string filepath, float x, float y, unsigned int fx, unsigned int fy, IDENTIFICATION _id)
 {
@@ -73,8 +73,8 @@ character::character(std::string filepath, float x, float y, unsigned int fx, un
     visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
     posX = visual.rect.getPosition().x;
     posY = visual.rect.getPosition().y;
-    walkToX = posX;
-    walkToY = posY;
+    // walkToX = posX;
+    // walkToY = posY;
     id = _id;
     hp = maxhp;
 }
@@ -87,8 +87,8 @@ void character::MoveTo(float _x, float _y, dungeon *currentDungeon)
         _y -= currentDungeon->screenPositionY;
     }
 
-    walkToX = _x;
-    walkToY = _y;
+    // walkToX = _x;
+    // walkToY = _y;
 }
 
 // void character::strikeTarget(float delta_time)
@@ -130,30 +130,31 @@ void character::Update(float delta_time, float screenOffsetX, float screenOffset
         visual.rect.setColor(sf::Color(50, 50, 50, 255));
         visual.rect.setRotation(90);
         visual.Put(posX + screenOffsetX, posY + screenOffsetY);
+        // visual.Move(screenOffsetX, screenOffsetY);
         return;
     }
 
-    float xWalkDist = posX - walkToX;
-    float yWalkDist = posY - walkToY;
+    // float xWalkDist = posX - walkToX;
+    // float yWalkDist = posY - walkToY;
 
-    if (walkToX != posX && walkToY == posY)
-    {
-        velocityX = -xWalkDist / std::abs(xWalkDist) * runSpeed * delta_time;
-    }
-    if (walkToY != posY && walkToX == posX)
-    {
-        velocityY = -yWalkDist / std::abs(yWalkDist) * runSpeed * delta_time;
-    }
-    if (walkToX != posX && walkToY != posY)
-    {
-        float normalizationCap = std::max(std::abs(xWalkDist), std::abs(yWalkDist));
-        velocityX = -xWalkDist / normalizationCap * runSpeed * delta_time;
-        velocityY = -yWalkDist / normalizationCap * runSpeed * delta_time;
-    }
-    if (std::abs(xWalkDist) < runSpeed * delta_time * 0.8f)
-        velocityX = 0.0f;
-    if (std::abs(yWalkDist) < runSpeed * delta_time * 0.8f)
-        velocityY = 0.0f;
+    // if (walkToX != posX && walkToY == posY)
+    // {
+    //     velocityX = -xWalkDist / std::abs(xWalkDist) * runSpeed * delta_time;
+    // }
+    // if (walkToY != posY && walkToX == posX)
+    // {
+    //     velocityY = -yWalkDist / std::abs(yWalkDist) * runSpeed * delta_time;
+    // }
+    // if (walkToX != posX && walkToY != posY)
+    // {
+    //     float normalizationCap = std::max(std::abs(xWalkDist), std::abs(yWalkDist));
+    //     velocityX = -xWalkDist / normalizationCap * runSpeed * delta_time;
+    //     velocityY = -yWalkDist / normalizationCap * runSpeed * delta_time;
+    // }
+    // if (std::abs(xWalkDist) < runSpeed * delta_time * 0.8f)
+    //     velocityX = 0.0f;
+    // if (std::abs(yWalkDist) < runSpeed * delta_time * 0.8f)
+    //     velocityY = 0.0f;
 
     if (animationFinished)
     {
@@ -169,15 +170,14 @@ void character::Update(float delta_time, float screenOffsetX, float screenOffset
     if (animations[playingAnim].finished)
         animationFinished = true;
 
-    velocityY -= 15.0f * delta_time;
     onGround = false;
 }
 void character::updatePosition()
 {
     // posX += velocityX * runSpeedMulti;
     // posY += velocityY * runSpeedMulti;
-    posX += velocityX;
-    posY += velocityY;
+    posX += velocityX / massScale; // it's just a disaster, please try and remove massScale entirely
+    posY += velocityY / massScale;
 }
 
 void character::SetAnimation(ANIMATION_MAPPINGS id, unsigned int s, unsigned int e, float spd)
@@ -275,6 +275,10 @@ void game_system::update(dungeon &floor, float delta_time)
             }
         }
         characters[i]->Update(delta_time, floor.screenPositionX, floor.screenPositionY);
+        if (!characters[i]->onGround)
+        {
+            characters[i]->velocityY += 1.0f * delta_time;
+        }
 
         for (int j = 0; j < floor.collision_box_count; ++j)
         {
@@ -286,23 +290,23 @@ void game_system::update(dungeon &floor, float delta_time)
                 continue;
             }
 
-            float playerMoveSpeedX = characters[i]->runSpeed;
-            if (characters[i]->walkToX < characters[i]->posX)
-                playerMoveSpeedX = -characters[i]->runSpeed;
+            // float playerMoveSpeedX = characters[i]->velocityX;
+            // if (characters[i]->walkToX < characters[i]->posX)
+            //     playerMoveSpeedX = -characters[i]->runSpeed;
 
-            float playerMoveSpeedY = characters[i]->runSpeed;
-            if (characters[i]->walkToY < characters[i]->posY)
-                playerMoveSpeedY = -characters[i]->runSpeed;
+            // float playerMoveSpeedY = characters[i]->velocityY;
+            // if (characters[i]->walkToY < characters[i]->posY)
+            //     playerMoveSpeedY = -characters[i]->runSpeed;
 
-            if (characters[i]->walkToX == characters[i]->posX)
-                playerMoveSpeedX = 0.0f;
-            if (characters[i]->walkToY == characters[i]->posY)
-                playerMoveSpeedY = 0.0f;
+            // if (characters[i]->walkToX == characters[i]->posX)
+            //     playerMoveSpeedX = 0.0f;
+            // if (characters[i]->walkToY == characters[i]->posY)
+            //     playerMoveSpeedY = 0.0f;
 
             float xNormal = 0.0f, yNormal = 0.0f;
 
-            float firstCollisionHitTest = characters[i]->collider.response(playerMoveSpeedX * delta_time,
-                                                                           playerMoveSpeedY * delta_time, floor.collision_boxes[j], xNormal, yNormal);
+            float firstCollisionHitTest = characters[i]->collider.response(characters[i]->velocityX,
+                                                                           characters[i]->velocityY, floor.collision_boxes[j], xNormal, yNormal);
 
             if (firstCollisionHitTest < 1.0f && xNormal < 0.0f && characters[i]->velocityX > 0.0f)
             {

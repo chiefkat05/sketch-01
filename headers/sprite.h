@@ -86,4 +86,6 @@ struct animation
     }
 };
 
+void clearAllTextures();
+
 #endif

@@ -72,3 +72,11 @@ void sprite::Move(float _xDist, float _yDist)
 {
     rect.move(sf::Vector2(_xDist, _yDist));
 }
+
+void clearAllTextures()
+{
+    for (int i = 0; i < texture_limit; ++i)
+    {
+        tPile.list[i].~Texture();
+    }
+}

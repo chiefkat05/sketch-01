@@ -6,18 +6,15 @@
 #include "sprite.h"
 #include "collision.h"
 
-const unsigned int room_limit = 12;
 const unsigned int width_limit = 128;
 const unsigned int height_limit = 128;
-const unsigned int collision_box_limit = 64;
+const unsigned int collision_box_limit = 128;
 const unsigned int collision_id_limit = 3;
-const unsigned int entity_limit_2 = 64;
-
-#define NULL_TILE -2147483647
 
 struct tile
 {
-    int id = 0, collisionID = 0;
+    unsigned int id = 0;
+    unsigned int collisionID = -1;
     bool collisiontaken;
 };
 

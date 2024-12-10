@@ -45,14 +45,14 @@ struct character
 
     animation animations[animation_limit];
     float posX = 0.0f, posY = 0.0f;
-    float walkToX = 0.0f, walkToY = 0.0f;
+    // float walkToX = 0.0f, walkToY = 0.0f;
     sprite visual;
     aabb collider;
 
     IDENTIFICATION id = CH_MONSTER;
     float attackTimer = 0.0f;
     int hp = 10, maxhp = 10;
-    float runSpeed = 100.0f;
+    float runSpeed = 0.1f;
 
     bool animationFinished = true, animationLooping = false;
     ANIMATION_MAPPINGS playingAnim = ANIM_IDLE;
