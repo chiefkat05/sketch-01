@@ -1,7 +1,5 @@
 #include "../headers/system.h"
 
-extern float massScale, massYOffset;
-
 soundhandler soundplayer;
 
 // animation. When animation is on x frame, trigger ability. Ability consists of a list of targets, and a function. The function will take the targets and do something with them.
@@ -57,22 +55,22 @@ character::character(sprite &v, IDENTIFICATION _id) : visual(v)
 {
     visual.rect.setTextureRect(sf::IntRect(0, 0, visual.spriteW, visual.spriteH));
     visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
-    posX = visual.rect.getPosition().x;
-    posY = visual.rect.getPosition().y;
+    // posX = visual.rect.getPosition().x;
+    // posY = visual.rect.getPosition().y;
     // walkToX = posX;
     // walkToY = posY;
     id = _id;
     hp = maxhp;
 
-    collider = aabb(posX, posY, posX + visual.spriteW, posY + visual.spriteH * 0.5f);
+    collider = aabb(visual.rect.getPosition().x, visual.rect.getPosition().y, visual.rect.getPosition().x + visual.spriteW, visual.rect.getPosition().y + visual.spriteH * 0.5f);
 }
 character::character(std::string filepath, float x, float y, unsigned int fx, unsigned int fy, IDENTIFICATION _id)
 {
     visual = sprite(filepath.c_str(), x, y, fx, fy);
     visual.rect.setTextureRect(sf::IntRect(0, 0, visual.spriteW, visual.spriteH));
     visual.rect.setOrigin(sf::Vector2(static_cast<float>(visual.spriteW) * 0.5f, static_cast<float>(visual.spriteH) * 0.5f));
-    posX = visual.rect.getPosition().x;
-    posY = visual.rect.getPosition().y;
+    // posX = visual.rect.getPosition().x;
+    // posY = visual.rect.getPosition().y;
     // walkToX = posX;
     // walkToY = posY;
     id = _id;
@@ -83,8 +81,8 @@ void character::MoveTo(float _x, float _y, dungeon *currentDungeon)
 {
     if (currentDungeon != nullptr)
     {
-        _x -= currentDungeon->screenPositionX;
-        _y -= currentDungeon->screenPositionY;
+        _x -= currentDungeon->spawnLocationX;
+        _y -= currentDungeon->spawnLocationY;
     }
 
     // walkToX = _x;
@@ -121,15 +119,15 @@ void character::MoveTo(float _x, float _y, dungeon *currentDungeon)
 //     }
 // }
 
-void character::Update(float delta_time, float screenOffsetX, float screenOffsetY)
+void character::Update(float delta_time)
 {
-    collider.moveCenterToPoint(posX, posY + 4.0f);
+    collider.moveCenterToPoint(visual.rect.getPosition().x, visual.rect.getPosition().y + 4.0f);
 
     if (hp <= 0)
     {
         visual.rect.setColor(sf::Color(50, 50, 50, 255));
         visual.rect.setRotation(90);
-        visual.Put(posX + screenOffsetX, posY + screenOffsetY);
+        // visual.Put(posX + screenOffsetX, posY + screenOffsetY);
         // visual.Move(screenOffsetX, screenOffsetY);
         return;
     }
@@ -163,7 +161,7 @@ void character::Update(float delta_time, float screenOffsetX, float screenOffset
 
     animations[playingAnim].run(delta_time, animationLooping);
 
-    visual.Put(posX + screenOffsetX, posY + screenOffsetY);
+    // visual.Put(posX + screenOffsetX, posY + screenOffsetY);
 
     animationFinished = false;
 
@@ -172,12 +170,14 @@ void character::Update(float delta_time, float screenOffsetX, float screenOffset
 
     onGround = false;
 }
-void character::updatePosition()
+void character::updatePosition(float delta_time)
 {
     // posX += velocityX * runSpeedMulti;
     // posY += velocityY * runSpeedMulti;
-    posX += velocityX / massScale; // it's just a disaster, please try and remove massScale entirely
-    posY += velocityY / massScale;
+    // posX += velocityX; // it's just a disaster, please try and remo entirely
+    // posY += velocityY;
+    visual.Move(velocityX * delta_time, velocityY * delta_time);
+    std::cout << velocityX << " hmm\n";
 }
 
 void character::SetAnimation(ANIMATION_MAPPINGS id, unsigned int s, unsigned int e, float spd)
@@ -253,7 +253,7 @@ void game_system::update(dungeon &floor, float delta_time)
     {
         for (int i = 0; i < characterCount; ++i)
         {
-            characters[i]->visual.Put(characters[i]->posX + floor.screenPositionX, characters[i]->posY + floor.screenPositionY);
+            characters[i]->visual.Put(characters[i]->visual.rect.getPosition().x, characters[i]->visual.rect.getPosition().y);
         }
         return;
     }
@@ -274,10 +274,10 @@ void game_system::update(dungeon &floor, float delta_time)
                 break;
             }
         }
-        characters[i]->Update(delta_time, floor.screenPositionX, floor.screenPositionY);
+        characters[i]->Update(delta_time);
         if (!characters[i]->onGround)
         {
-            characters[i]->velocityY += 1.0f * delta_time;
+            characters[i]->velocityY += 1.0f;
         }
 
         for (int j = 0; j < floor.collision_box_count; ++j)
@@ -305,8 +305,8 @@ void game_system::update(dungeon &floor, float delta_time)
 
             float xNormal = 0.0f, yNormal = 0.0f;
 
-            float firstCollisionHitTest = characters[i]->collider.response(characters[i]->velocityX,
-                                                                           characters[i]->velocityY, floor.collision_boxes[j], xNormal, yNormal);
+            float firstCollisionHitTest = characters[i]->collider.response(characters[i]->velocityX * delta_time,
+                                                                           characters[i]->velocityY * delta_time, floor.collision_boxes[j], xNormal, yNormal);
 
             if (firstCollisionHitTest < 1.0f && xNormal < 0.0f && characters[i]->velocityX > 0.0f)
             {
@@ -326,13 +326,13 @@ void game_system::update(dungeon &floor, float delta_time)
                 characters[i]->velocityY *= firstCollisionHitTest;
             }
         }
-        characters[i]->updatePosition();
+        characters[i]->updatePosition(delta_time);
     }
 
     for (int i = 0; i < particlesystemcount; ++i)
     {
-        particles[i]->spawn(floor.screenPositionX, floor.screenPositionY, delta_time);
-        particles[i]->update(delta_time, floor.screenChangeDistanceX, floor.screenChangeDistanceY);
+        particles[i]->spawn(delta_time);
+        particles[i]->update(delta_time);
     }
 }
 

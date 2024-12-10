@@ -7,7 +7,7 @@ dungeon::dungeon()
 {
     dungeonInitialized = false;
 }
-dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize, float massScale, float massYOffset)
+dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize)
 {
     tileSetPath = _tileSetPath;
     dungeonSprite = sprite(tileSetPath, 0.0f, 0.0f, dungeonSpriteXFrames, dungeonSpriteYFrames);
@@ -23,35 +23,19 @@ dungeon::dungeon(const char *_tileSetPath, const unsigned int xSize, const unsig
     } // the pointer to the ui_element's visual object is incorrect inside the element's update function
 }
 
-void dungeon::updateScreenPosition(float mouseX, float mouseY, float delta_time, float massScale, float massYOffset)
+void dungeon::changeScreenViewPosition(sf::View &view, float newX, float newY)
 {
-    // if (mouseX < 10.0f / massScale)
-    //     screenPositionX += (80.0f / massScale - (mouseX * 8.0f)) * delta_time * massScale;
-    // if (mouseX > 246.0f / massScale)
-    //     screenPositionX -= ((mouseX - 246.0f / massScale) * 8.0f) * delta_time * massScale;
-    // if (mouseY < 10.0f / massScale)
-    //     screenPositionY += (80.0f / massScale - (mouseY * 8.0f)) * delta_time * massScale;
-    // if (mouseY > 118.0f / massScale + (massYOffset * 2.0f / massScale))
-    //     screenPositionY -= ((mouseY - (118.0f / massScale + (massYOffset * 2.0f / massScale))) * 8.0f) * delta_time * massScale;
+    float x = newX, y = newY;
+    if (newX > viewBoundsWidth)
+        x = viewBoundsWidth;
+    if (newX < viewBoundsX)
+        x = viewBoundsX;
+    if (newX > viewBoundsHeight)
+        y = viewBoundsHeight;
+    if (newX < viewBoundsY)
+        y = viewBoundsY;
 
-    float screenXPanLimit = 10.0f + (static_cast<float>(std::max(0, static_cast<int>(roomWidth) - 14)) * dungeonSprite.spriteW);
-    if (screenPositionX < -screenXPanLimit)
-    {
-        screenPositionX = -screenXPanLimit;
-    }
-    if (screenPositionX > 0.0f)
-    {
-        screenPositionX = 0.0f;
-    }
-    float screenYPanLimit = 10.0f + (static_cast<float>(std::max(0, static_cast<int>(roomHeight) - 7)) * dungeonSprite.spriteH);
-    if (screenPositionY < -screenYPanLimit)
-    {
-        screenPositionY = -screenYPanLimit;
-    }
-    if (screenPositionY > 10.0f)
-    {
-        screenPositionY = 10.0f;
-    }
+    view.setCenter(sf::Vector2f(x, y));
 }
 
 void dungeon::draw(sf::RenderWindow *win)
@@ -69,15 +53,9 @@ void dungeon::draw(sf::RenderWindow *win)
             win->draw(dungeonSprite.rect);
         }
     }
-
-    screenChangeDistanceX = lastScreenPosX - screenPositionX;
-    screenChangeDistanceY = lastScreenPosY - screenPositionY;
-
-    lastScreenPosX = screenPositionX;
-    lastScreenPosY = screenPositionY;
 }
 
-void dungeon::readRoomFile(const char *path, float mScale, float mYOffset)
+void dungeon::readRoomFile(const char *path)
 {
     std::ifstream file(path);
 
@@ -130,7 +108,6 @@ void dungeon::readRoomFile(const char *path, float mScale, float mYOffset)
                 break;
             case '2':
                 tiles[i][roomHeight].id = 5;
-                // tiles[i][roomHeight].collisionID = 1;
                 tiles[i][roomHeight].collisionID = 1;
             default:
                 tiles[i][roomHeight].id = -1;
@@ -224,4 +201,9 @@ void dungeon::readRoomFile(const char *path, float mScale, float mYOffset)
             }
         }
     }
+
+    viewBoundsX = 0.0f;
+    viewBoundsY = 0.0f;
+    viewBoundsWidth = roomWidth * dungeonSprite.spriteW;
+    viewBoundsHeight = -roomHeight * dungeonSprite.spriteH; // idk rn do later pls
 }

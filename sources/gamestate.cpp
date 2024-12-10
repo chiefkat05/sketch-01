@@ -45,8 +45,8 @@ void ui_element::update(float mouseX, float mouseY, bool mousePressed, bool mous
     switch (utype)
     {
     case UI_CLICKABLE:
-        if (mouseX < posX / massScale || mouseX > posX / massScale + width / massScale ||
-            mouseY < posY / massScale + massYOffset / massScale || mouseY > posY / massScale + height / massScale + massYOffset / massScale)
+        if (mouseX < posX || mouseX > posX + width ||
+            mouseY < posY || mouseY > posY + height)
         {
             if (visual.rect.getColor().r < 255)
             {

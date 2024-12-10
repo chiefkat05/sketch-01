@@ -68,12 +68,12 @@ struct particlesystem
     particlesystem(const char *path, unsigned int frame, unsigned int _particle_count, float _life_lower, float _life_upper,
                    float sX, float sY, float sW, float sH);
 
-    void spawn(float screenOffsetX, float screenOffsetY, float delta_time);
+    void spawn(float delta_time);
     void push(float xVel, float yVel, float xVelMax, float yVelMax);
 
     void linkVariable(PARTICLE_VARIABLE pv, float *value);
 
-    void update(float delta_time, float screenChangeX, float screenChangeY);
+    void update(float delta_time);
     void draw(sf::RenderWindow &win, float delta_time);
 
     void kill();
