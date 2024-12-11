@@ -85,8 +85,8 @@ void connector::listen(unsigned int ip_index)
         message >> spriteX;
         message >> spriteY;
 
-        game.characters[spriteIndex]->posX = spriteX;
-        game.characters[spriteIndex]->posY = spriteY;
+        // game.characters[spriteIndex]->posX = spriteX;
+        // game.characters[spriteIndex]->posY = spriteY;
         break;
     default:
         break;

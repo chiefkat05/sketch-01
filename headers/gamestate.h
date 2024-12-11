@@ -6,7 +6,6 @@
 #include "system.h"
 #include <vector>
 
-extern float massScale, massYOffset;
 extern bool buttonHovered;
 
 enum ui_element_type

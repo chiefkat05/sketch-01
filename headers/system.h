@@ -44,7 +44,7 @@ struct character
     bool onGround = false, jumped = false;
 
     animation animations[animation_limit];
-    float posX = 0.0f, posY = 0.0f;
+    // float posX = 0.0f, posY = 0.0f;
     // float walkToX = 0.0f, walkToY = 0.0f;
     sprite visual;
     aabb collider;
@@ -52,7 +52,7 @@ struct character
     IDENTIFICATION id = CH_MONSTER;
     float attackTimer = 0.0f;
     int hp = 10, maxhp = 10;
-    float runSpeed = 0.1f;
+    float runSpeed = 100.0f;
 
     bool animationFinished = true, animationLooping = false;
     ANIMATION_MAPPINGS playingAnim = ANIM_IDLE;
@@ -65,8 +65,8 @@ struct character
 
     void MoveTo(float _x, float _y, dungeon *currentDungeon);
 
-    void Update(float delta_time, float screenOffsetX, float screenOffsetY);
-    void updatePosition();
+    void Update(float delta_time);
+    void updatePosition(float delta_time);
 
     void SetAnimation(ANIMATION_MAPPINGS id, unsigned int s, unsigned int e, float spd);
     void PlayAnimation(ANIMATION_MAPPINGS id, float delta_time, bool loops);

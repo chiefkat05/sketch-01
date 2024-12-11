@@ -28,21 +28,21 @@ struct dungeon
     unsigned int tileSpriteX, tileSpriteY;
     float spawnLocationX = 0.0f, spawnLocationY = 0.0f;
 
+    float viewBoundsX, viewBoundsY, viewBoundsWidth, viewBoundsHeight;
+
     const char *tileSetPath;
 
     aabb collision_boxes[collision_box_limit];
     unsigned int collision_box_count = 0;
 
-    float screenPositionX = 0.0f, screenPositionY = 0.0f, lastScreenPosX = 0.0f, lastScreenPosY = 0.0f, screenChangeDistanceX, screenChangeDistanceY;
-
     dungeon();
-    dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize, float massScale, float massYOffset);
+    dungeon(const char *_tileSetPath, const unsigned int xSize, const unsigned int ySize);
 
-    void updateScreenPosition(float mouseX, float mouseY, float delta_time, float massScale, float massYOffset);
+    void changeScreenViewPosition(sf::View &view, float newX, float newY);
 
     void draw(sf::RenderWindow *win);
 
-    void readRoomFile(const char *path, float mScale, float mYOffset);
+    void readRoomFile(const char *path);
 };
 
 #endif

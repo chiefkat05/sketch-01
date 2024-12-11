@@ -48,7 +48,7 @@ particlesystem::particlesystem(const char *path, unsigned int frame, unsigned in
                                            visual.spriteW, visual.spriteH));
 }
 
-void particlesystem::spawn(float screenOffsetX, float screenOffsetY, float delta_time)
+void particlesystem::spawn(float delta_time)
 {
     // if (variable_pointers[PV_SPAWN_TIMER] == nullptr)
     variables[PV_SPAWN_TIMER] -= 10.0f * delta_time;
@@ -64,7 +64,7 @@ void particlesystem::spawn(float screenOffsetX, float screenOffsetY, float delta
     std::uniform_real_distribution<double> posYRand(variables[PV_SPAWN_Y], variables[PV_SPAWN_H]);
     std::uniform_real_distribution<double> lifeRand(variables[PV_LIFE_LOW], variables[PV_LIFE_HIGH]);
 
-    particles[particles_alive].Put(posXRand(numGen) + screenOffsetX, posYRand(numGen) + screenOffsetY);
+    particles[particles_alive].Put(posXRand(numGen), posYRand(numGen));
     particles[particles_alive].velX = 0.0f;
     particles[particles_alive].velY = 0.0f;
     particles[particles_alive].life = lifeRand(numGen);
@@ -88,7 +88,7 @@ void particlesystem::push(float xVel, float yVel, float xVelMax, float yVelMax)
     variables[PV_PUSHMAX_Y] = yVelMax;
 }
 
-void particlesystem::update(float delta_time, float screenChangeX, float screenChangeY)
+void particlesystem::update(float delta_time)
 {
     for (int i = 0; i < particles_alive; ++i)
     {
@@ -99,7 +99,7 @@ void particlesystem::update(float delta_time, float screenChangeX, float screenC
             continue;
         }
 
-        particles[i].Move(particles[i].velX * delta_time - screenChangeX, particles[i].velY * delta_time - screenChangeY);
+        particles[i].Move(particles[i].velX * delta_time, particles[i].velY * delta_time);
         particles[i].life -= 10.0f * delta_time;
         // if (fadewithlife)  // should go in particlesystem::draw()
         //     particles[i].visual.rect.setColor(sf::Color(255, 255, 255, static_cast<int>(particles[i].life * particles[i].lifestartalphamultiple)));
