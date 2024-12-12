@@ -2,6 +2,7 @@
 #define NETWORK_H
 
 #include "setup.h"
+#define SFML_STATIC
 #include <SFML/Network.hpp>
 
 const unsigned int packet_size = 100;

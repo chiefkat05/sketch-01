@@ -219,12 +219,12 @@ int main()
     sprite resolutionBlinderTop("../img/ui/resolution_blinder.png", 0.0f, 0.0f, 1, 1);
     sprite resolutionBlinderBottom("../img/ui/resolution_blinder.png", 0.0f, 0.0f, 1, 1);
 
-    sf::Font defaultFont;
-    defaultFont.setSmooth(false);
-    if (!defaultFont.loadFromFile("../img/fonts/Super Kinds.ttf"))
-    {
-        std::cout << "super kinds font failed to load :(\n";
-    }
+    // sf::Font defaultFont;
+    // defaultFont.setSmooth(false);
+    // if (!defaultFont.loadFromFile("../img/fonts/Super Kinds.ttf"))
+    // {
+    //     std::cout << "super kinds font failed to load :(\n";
+    // }
 
     while (window.isOpen())
     {
