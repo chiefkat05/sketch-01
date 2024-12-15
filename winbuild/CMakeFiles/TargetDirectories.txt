@@ -1,3 +1,0 @@
-/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles/main.dir
-/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles/edit_cache.dir
-/home/chiefkat/Documents/code/sketch-01/winbuild/CMakeFiles/rebuild_cache.dir
